@@ -1,0 +1,6 @@
+name: ukre
+type: athena
+options:
+  database: ukre
+  outputBucket: aws-athena-query-results-434616802091-eu-west-1
+  testTableName: pipr
