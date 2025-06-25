@@ -82,4 +82,4 @@ plugins:
     evidence-connector-aws-athena: {}
 
 deployment:
-  basePath: /real_estate_research/frontend
+  basePath: /nest-smart

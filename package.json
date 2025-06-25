@@ -1,8 +1,8 @@
 {
-  "name": "my-evidence-project",
+  "name": "nest-smart",
   "version": "0.0.1",
   "scripts": {
-    "build": "EVIDENCE_BUILD_DIR=./build/real_estate_research/frontend evidence build",
+    "build": "EVIDENCE_BUILD_DIR=./build/nest-smart evidence build",
     "build:strict": "evidence build:strict",
     "dev": "evidence dev --open /",
     "test": "evidence build",
