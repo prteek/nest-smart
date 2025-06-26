@@ -8,7 +8,7 @@ queries:
 
 ## The UK
 
-<ButtonGroup name=selected_type_uk>
+<ButtonGroup name=selected_type>
     <ButtonGroupItem valueLabel="Buy" value="buy" default/>
     <ButtonGroupItem valueLabel="Rent" value="rent" />
 </ButtonGroup>
@@ -18,7 +18,8 @@ queries:
 ```uk_current_filtered
 select *
 FROM ${uk_current}
-WHERE type = '${inputs.selected_type_uk}'
+WHERE type = '${inputs.selected_type}'
+
 ```
 
 <BigValue
@@ -52,13 +53,13 @@ title="Latest price (Terraced)"
 ```region_current_filtered
 select *
 FROM ${region_current}
-WHERE type = '${inputs.selected_type_uk}'
+WHERE type = '${inputs.selected_type}'
 ```
 
 ```uk_indices_long
 select *
 FROM ukre.uk_indices_long
-WHERE type = '${inputs.selected_type_uk}'
+WHERE type = '${inputs.selected_type}'
 and time_period >= cast('2020-01-01' as date)
 ```
 
@@ -110,7 +111,7 @@ select upper(area_name) as area_name
 , price_current
 FROM ${lad_current}
 WHERE asset_class='${inputs.selected_asset_class_lad.value}'
-    and type = '${inputs.selected_type_uk}'
+    and type = '${inputs.selected_type}'
     and not area_name in ('kensington and chelsea', 'westminster')
 ```
 
@@ -121,7 +122,7 @@ select upper(area_name) as area_name
 , time_period
 , price
 FROM ukre.lad_indices_long
-WHERE type = '${inputs.selected_type_uk}'
+WHERE type = '${inputs.selected_type}'
     and time_period >= cast('2020-01-01' as date)
     and upper(area_name)='${inputs.lad_current_map.area_name}'
     and asset_class='${inputs.selected_asset_class_lad.value}'
@@ -133,7 +134,7 @@ Click an area on map to view series
 <AreaMap
   data={lad_current_filtered}
   areaCol="area_code"
-  geoJsonUrl="https://public-geoms.s3-eu-west-1.amazonaws.com/Local_Authority_Districts_May_2024_Boundaries_UK_BFC_-6788913184658251542.geojson"
+  geoJsonUrl="https://public-geoms.s3-eu-west-1.amazonaws.com/lad_simple.geojson"
   geoId="LAD24CD"
   value="price_current"
   title={`Asset class: ${inputs.selected_asset_class_lad.value}`}
