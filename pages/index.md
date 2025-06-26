@@ -3,6 +3,7 @@ title: Nest Smart
 queries:
     - uk_current.sql
     - lad_current.sql
+    - region_current.sql
 ---
 
 ## The UK
@@ -25,24 +26,44 @@ FROM ${uk_current}
 WHERE asset_class = 'all' and type = '${inputs.selected_type_uk}'
 ```
 
+```region_current_filtered
+select *
+FROM ${region_current}
+WHERE type = '${inputs.selected_type_uk}'
+```
+
 <BigValue
 data={uk_current_filtered}
 value=price_current
 comparison=growth_1yr
 comparisonFmt=pct1
 comparisonTitle="YoY"
+title="Latest price ('All')"
 />
 
-<LineChart
-data={uk_indices_long}
-x=time_period
-y=price
-yAxisTitle="Price (£)"
-series=asset_class
-width=200
-title="UK price index"
-/>
-
+<Grid cols=2>
+    <LineChart
+    data={uk_indices_long}
+    x=time_period
+    y=price
+    yAxisTitle="Price (£)"
+    series=asset_class
+    width=200
+    title="UK price index"
+    />
+    <Heatmap
+    data={region_current_filtered}
+    y=area_name
+    x=asset_class
+    value=price_current
+    xLabelRotation=-45
+    valueFmt=gbp
+    colorScale={[
+        ['rgb(254,234,159)', 'rgb(254,234,159)'],
+        ['rgb(218,66,41)', 'rgb(218,66,41)']
+    ]}
+    />
+</Grid>
 
 ```asset_classes
 select distinct(asset_class) as asset_class
@@ -81,6 +102,8 @@ WHERE type = '${inputs.selected_type_uk}'
     and asset_class='${inputs.selected_asset_class_lad.value}'
 ```
 
+Click an area on map to view series
+
 <Grid cols=2>
 <AreaMap
   data={lad_current_filtered}
@@ -88,17 +111,20 @@ WHERE type = '${inputs.selected_type_uk}'
   geoJsonUrl="https://public-geoms.s3-eu-west-1.amazonaws.com/Local_Authority_Districts_May_2024_Boundaries_UK_BFC_-6788913184658251542.geojson"
   geoId="LAD24CD"
   value="price_current"
-  title={inputs.selected_asset_class_lad.value}
+  title={`Asset class: ${inputs.selected_asset_class_lad.value}`}
   tooltip={[
     {id: 'area_name', showColumnName: false},
     {id: 'price_current', fmt: 'gbp', valueClass: 'text-[green]', showColumnName: false}
-]}
+    ]}
   colorPalette={[
         ['#82e0aa', '#82e0aa'],
         ['#f7dc6f', '#f7dc6f'],
         ['#e59866', '#e59866'],
         ['#d35400', '#d35400'],
     ]}
+  startingZoom=5
+  startingLat=52.23967
+  startingLong=0.0
   name=lad_current_map
 />
 
@@ -108,6 +134,7 @@ x=time_period
 y=price
 yAxisTitle="Price (£)"
 series=asset_class
-title={`${inputs.lad_current_map.area_name}, ${inputs.selected_asset_class_lad.value}`}
+title={inputs.lad_current_map.area_name}
+subtitle={inputs.selected_asset_class_lad.value}
 />
 </Grid>
