@@ -13,18 +13,41 @@ queries:
     <ButtonGroupItem valueLabel="Rent" value="rent" />
 </ButtonGroup>
 
-```uk_indices_long
-select *
-FROM ukre.uk_indices_long
-WHERE type = '${inputs.selected_type_uk}'
-and time_period >= cast('2020-01-01' as date)
-```
+---
 
 ```uk_current_filtered
 select *
 FROM ${uk_current}
-WHERE asset_class = 'all' and type = '${inputs.selected_type_uk}'
+WHERE type = '${inputs.selected_type_uk}'
 ```
+
+<BigValue
+data={uk_current_filtered.filter(d => d.asset_class === 'all')}
+value=price_current
+comparison=growth_1yr
+comparisonFmt=pct1
+comparisonTitle="YoY"
+title="Latest price (All)"
+/>
+
+<BigValue
+data={uk_current_filtered.filter(d => d.asset_class === 'terraced')}
+value=price_current
+comparison=growth_1yr
+comparisonFmt=pct1
+comparisonTitle="YoY"
+title="Latest price (Terraced)"
+/>
+
+<BigValue
+  data={uk_current_filtered.filter(d => d.asset_class === 'flat')}
+  value=price_current
+  comparison=growth_1yr
+  comparisonFmt=pct1
+  comparisonTitle="YoY"
+  title="Latest price (Flats)"
+/>
+
 
 ```region_current_filtered
 select *
@@ -32,14 +55,13 @@ FROM ${region_current}
 WHERE type = '${inputs.selected_type_uk}'
 ```
 
-<BigValue
-data={uk_current_filtered}
-value=price_current
-comparison=growth_1yr
-comparisonFmt=pct1
-comparisonTitle="YoY"
-title="Latest price (All)"
-/>
+```uk_indices_long
+select *
+FROM ukre.uk_indices_long
+WHERE type = '${inputs.selected_type_uk}'
+and time_period >= cast('2020-01-01' as date)
+```
+
 
 <Grid cols=2>
     <LineChart
@@ -66,6 +88,7 @@ title="Latest price (All)"
     ]}
     />
 </Grid>
+
 
 ```asset_classes
 select distinct(asset_class) as asset_class
