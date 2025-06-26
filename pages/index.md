@@ -35,7 +35,7 @@ select area_name
 , type
 , price_current
 FROM ${lad_current}
-WHERE asset_class = 'all' and type = '${inputs.selected_type_uk}'
+WHERE asset_class = 'all' and type = '${inputs.selected_type_uk}' and not area_name in ('kensington and chelsea', 'westminster')
 ```
 
 <AreaMap
@@ -48,4 +48,11 @@ WHERE asset_class = 'all' and type = '${inputs.selected_type_uk}'
     {id: 'area_name', showColumnName: false},
     {id: 'price_current', fmt: 'gbp', valueClass: 'text-[green]', showColumnName: false}
 ]}
+  height=400
+  colorPalette={[
+        ['#82e0aa', '#82e0aa'],
+        ['#f7dc6f', '#f7dc6f'],
+        ['#e59866', '#e59866'],
+        ['#d35400', '#d35400'],
+    ]}
 />
