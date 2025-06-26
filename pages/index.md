@@ -38,7 +38,7 @@ value=price_current
 comparison=growth_1yr
 comparisonFmt=pct1
 comparisonTitle="YoY"
-title="Latest price ('All')"
+title="Latest price (All)"
 />
 
 <Grid cols=2>
@@ -57,6 +57,8 @@ title="Latest price ('All')"
     x=asset_class
     value=price_current
     xLabelRotation=-45
+    xSortOrder=asc
+    ySortOrder=desc
     valueFmt=gbp
     colorScale={[
         ['rgb(254,234,159)', 'rgb(254,234,159)'],
