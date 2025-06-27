@@ -122,6 +122,16 @@ WHERE type = '${inputs.selected_type}'
     and time_period >= cast('2020-01-01' as date)
     and upper(area_name)='${inputs.lad_current_map.area_name}'
     and asset_class='${inputs.selected_asset_class_lad.value}'
+union
+select 'UK' as area_name
+, type
+, asset_class
+, time_period
+, price
+FROM ukre.uk_indices_long
+WHERE type = '${inputs.selected_type}'
+    and time_period >= cast('2020-01-01' as date)
+    and asset_class='${inputs.selected_asset_class_lad.value}'
 ```
 
 Click an area on map to view series
@@ -149,7 +159,7 @@ data={lad_indices_long_filtered}
 x=time_period
 y=price
 yAxisTitle="Price (£)"
-series=asset_class
+series=area_name
 title={inputs.lad_current_map.area_name}
 subtitle={inputs.selected_asset_class_lad.value}
 />
