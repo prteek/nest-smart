@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: combined_indices_long
+    description: "Merging all indices and creating a long format table for analytics"
+    config:
+        materialized: external
+        location: 's3://db.ukre/combined_indices_long/data'
+        format: parquet
+        glue_register: true
+        glue_database: ukre

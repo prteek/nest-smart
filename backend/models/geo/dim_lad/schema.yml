@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_lad
+    description: "Loading GEOJSON data in s3 from https://geoportal.statistics.gov.uk/datasets/ons::local-authority-districts-may-2024-boundaries-uk-bfc-2/explore"
+    config:
+        materialized: external
+        location: 's3://db.geo/dim_lad/data'
+        format: parquet
+        glue_register: true
+        glue_database: geo

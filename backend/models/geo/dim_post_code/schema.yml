@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_post_code
+    description: "Loading csv data"
+    config:
+        materialized: external
+        location: 's3://db.geo/dim_post_code/data'
+        format: parquet
+        glue_register: true
+        glue_database: geo

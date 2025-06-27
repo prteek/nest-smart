@@ -1,0 +1,44 @@
+dev:
+  target: default
+  outputs:
+    default:
+      catalog: AwsDataCatalog
+      region_name: eu-west-1
+      s3_data_dir: s3://ds-dev-bkt
+      s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
+      s3_data_naming: table_unique
+      schema: default
+      threads: 1
+      type: athena
+
+    ukre:
+      catalog: AwsDataCatalog
+      region_name: eu-west-1
+      s3_data_dir: s3://db.ukre
+      s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
+      s3_data_naming: table_unique
+      schema: ukre
+      threads: 1
+      type: athena
+
+    geo:
+      catalog: AwsDataCatalog
+      region_name: eu-west-1
+      s3_data_dir: s3://db.geo
+      s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
+      s3_data_naming: table_unique
+      schema: geo
+      threads: 1
+      type: athena
+
+    duck:
+      type: duckdb
+      path: /tmp/dbt.duckdb  # Path to your DuckDB database file
+      extensions:
+        - httpfs  # Required for reading files from S3/HTTP
+        - parquet
+        - spatial
+      settings:
+        s3_region: eu-west-1
+        s3_access_key_id: "{{ env_var('S3_ACCESS_KEY_ID') }}"
+        s3_secret_access_key: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"

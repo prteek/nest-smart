@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: area_types
+    description: "Defining area types for different geographies to filter results"
+    config:
+        materialized: external
+        location: 's3://db.geo/area_types/data'
+        format: parquet
+        glue_register: true
+        glue_database: geo

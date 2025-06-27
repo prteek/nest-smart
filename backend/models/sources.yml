@@ -1,0 +1,55 @@
+version: 2
+sources:
+  - name: priceindexofprivaterentsukmonthlypricestatistics
+    tables:
+      - name: priceindexofprivaterentsukmonthlypricestatistics.xlsx
+        config:
+          external_location: "read_xlsx(
+            'https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics/18june2025/priceindexofprivaterentsukmonthlypricestatistics.xlsx'
+            , range = 'A3:AN'
+            , sheet='Table 1'
+            , stop_at_empty = true
+            , all_varchar=true
+            )"
+
+  - name: geojsons
+    tables:
+      - name: Local_Authority_Districts_May_2024_Boundaries_UK_BFC_-6788913184658251542.geojson
+        config:
+          external_location: "st_read(
+            'local_files/Local_Authority_Districts_May_2024_Boundaries_UK_BFC_-6788913184658251542.geojson'
+            )"
+
+      - name: Lower_layer_Super_Output_Areas_2021_EW_BFC_V8_-8407643096148449625.geojson
+        config:
+          external_location: "st_read(
+            'local_files/Lower_layer_Super_Output_Areas_2021_EW_BFC_V8_-8407643096148449625.geojson'
+            )"
+
+      - name: MOSA_2021_EW_BFC_V6_8073017919673588333.geojson
+        config:
+          external_location: "st_read(
+            'local_files/MOSA_2021_EW_BFC_V6_8073017919673588333.geojson'
+            )"
+
+      - name: dim_post_town.geojson
+        config:
+          external_location: "st_read(
+            'local_files/dim_post_town.geojson'
+            )"
+
+  - name: house-price-index-data
+    tables:
+      - name: UK-HPI-full-file-2025-04.csv
+        config:
+          external_location: "read_csv(
+            'https://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/UK-HPI-full-file-2025-04.csv'
+            )"
+
+
+  - name: doogal
+    tables:
+      - name: postcodes.csv
+        description: "Downloaded from https://www.doogal.co.uk/files/postcodes.zip"
+        config:
+          external_location: "local_files/postcodes.csv"

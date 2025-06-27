@@ -1,0 +1,10 @@
+numpy
+scipy
+pandas
+matplotlib
+statsmodels
+plotnine
+boto3
+awswrangler
+fsspec
+s3fs
