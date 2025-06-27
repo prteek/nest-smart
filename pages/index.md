@@ -32,6 +32,15 @@ title="Latest price (All)"
 />
 
 <BigValue
+data={uk_current_filtered.filter(d => d.asset_class === 'semi_detached')}
+value=price_current
+comparison=growth_1yr
+comparisonFmt=pct1
+comparisonTitle="YoY"
+title="Latest price (Semi Detached)"
+/>
+
+<BigValue
 data={uk_current_filtered.filter(d => d.asset_class === 'terraced')}
 value=price_current
 comparison=growth_1yr
@@ -134,16 +143,14 @@ WHERE type = '${inputs.selected_type}'
     and asset_class='${inputs.selected_asset_class_lad.value}'
 ```
 
-Click an area on map to view series
-
-<Grid cols=2>
+### Asset class: {inputs.selected_asset_class_lad.value}
+<p class="text-sm text-gray-500">Click an area on map to view series</p><Grid cols=2>
 <AreaMap
   data={lad_current_filtered}
   areaCol="area_code"
   geoJsonUrl="https://public-geoms.s3-eu-west-1.amazonaws.com/lad_simple.geojson"
   geoId="LAD24CD"
   value="price_current"
-  title={`Asset class: ${inputs.selected_asset_class_lad.value}`}
   tooltip={[
     {id: 'area_name', showColumnName: false},
     {id: 'price_current', fmt: 'gbp', valueClass: 'text-[green]', showColumnName: false}
@@ -160,7 +167,6 @@ x=time_period
 y=price
 yAxisTitle="Price (£)"
 series=area_name
-title={inputs.lad_current_map.area_name}
-subtitle={inputs.selected_asset_class_lad.value}
+legend=true
 />
 </Grid>
