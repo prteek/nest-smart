@@ -32,6 +32,12 @@ sources:
             'local_files/MOSA_2021_EW_BFC_V6_8073017919673588333.geojson'
             )"
 
+      - name: Counties_and_Unitary_Authorities_December_2024_Boundaries_UK_BFC_3348038940373313033.geojson
+        config:
+          external_location: "st_read(
+            'local_files/Counties_and_Unitary_Authorities_December_2024_Boundaries_UK_BFC_3348038940373313033.geojson'
+            )"
+
       - name: dim_post_town.geojson
         config:
           external_location: "st_read(

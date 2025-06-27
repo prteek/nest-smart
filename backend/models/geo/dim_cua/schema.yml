@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: dim_cua
+    description: "Loading GEOJSON data"
+    config:
+        materialized: external
+        location: 's3://db.geo/dim_cua/data'
+        format: parquet
+        glue_register: true
+        glue_database: geo
