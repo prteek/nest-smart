@@ -93,6 +93,8 @@ and time_period >= cast('2020-01-01' as date)
     ySortOrder=desc
     valueFmt=gbp
     />
+
+
 </Grid>
 
 
@@ -142,8 +144,9 @@ WHERE type = '${inputs.selected_type}'
     and time_period >= cast('2020-01-01' as date)
     and asset_class='${inputs.selected_asset_class_lad.value}'
 ```
+## Local Authorities
 
-### Asset class: {inputs.selected_asset_class_lad.value}
+Asset class: {inputs.selected_asset_class_lad.value}
 <p class="text-sm text-gray-500">Click an area on map to view series</p><Grid cols=2>
 <AreaMap
   data={lad_current_filtered}

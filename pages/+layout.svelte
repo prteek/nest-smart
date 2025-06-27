@@ -5,6 +5,10 @@
 	export let data;
 </script>
 
-<EvidenceDefaultLayout {data} neverShowQueries=true>
+<EvidenceDefaultLayout {data}
+neverShowQueries=true
+builtWithEvidence=false
+githubRepo=https://github.com/prteek/nest-smart
+>
 	<slot slot="content" />
 </EvidenceDefaultLayout>
