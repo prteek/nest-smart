@@ -83,10 +83,6 @@ and time_period >= cast('2020-01-01' as date)
     xSortOrder=asc
     ySortOrder=desc
     valueFmt=gbp
-    colorScale={[
-        ['rgb(254,234,159)', 'rgb(254,234,159)'],
-        ['rgb(218,66,41)', 'rgb(218,66,41)']
-    ]}
     />
 </Grid>
 
@@ -141,12 +137,6 @@ Click an area on map to view series
   tooltip={[
     {id: 'area_name', showColumnName: false},
     {id: 'price_current', fmt: 'gbp', valueClass: 'text-[green]', showColumnName: false}
-    ]}
-  colorPalette={[
-        ['#82e0aa', '#82e0aa'],
-        ['#f7dc6f', '#f7dc6f'],
-        ['#e59866', '#e59866'],
-        ['#d35400', '#d35400'],
     ]}
   startingZoom=5
   startingLat=52.23967
