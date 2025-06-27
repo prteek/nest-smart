@@ -93,8 +93,6 @@ and time_period >= cast('2020-01-01' as date)
     ySortOrder=desc
     valueFmt=gbp
     />
-
-
 </Grid>
 
 
@@ -102,6 +100,7 @@ and time_period >= cast('2020-01-01' as date)
 select distinct(asset_class) as asset_class
 from ${lad_current}
 ```
+
 <Dropdown
     data={asset_classes}
     name=selected_asset_class_lad
@@ -144,10 +143,13 @@ WHERE type = '${inputs.selected_type}'
     and time_period >= cast('2020-01-01' as date)
     and asset_class='${inputs.selected_asset_class_lad.value}'
 ```
+
 ## Local Authorities
 
 Asset class: {inputs.selected_asset_class_lad.value}
-<p class="text-sm text-gray-500">Click an area on map to view series</p><Grid cols=2>
+<Grid cols=2>
+<Group>
+<p class="text-sm text-gray-500">Click an area on map to view series</p>
 <AreaMap
   data={lad_current_filtered}
   areaCol="area_code"
@@ -163,6 +165,7 @@ Asset class: {inputs.selected_asset_class_lad.value}
   startingLong=0.0
   name=lad_current_map
 />
+</Group>
 
 <LineChart
 data={lad_indices_long_filtered}
