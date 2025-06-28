@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: post_town_geo_mapping
-    description: "Parry down sub geos to/from post town for consistency in membership"
+    description: "Because post_town is a non standard geography, parry down geos to/from post_town for consistency in membership"
     config:
         materialized: external
         location: 's3://db.geo/post_town_geo_mapping/data'
