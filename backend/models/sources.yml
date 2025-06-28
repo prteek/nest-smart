@@ -70,19 +70,9 @@ sources:
             quote='"'
             )
 
-  - name: index-of-multiple-deprivation
-    tables:
-      - name: TS011-2021-6-filtered-2025-06-28T09_28_22Z.csv
-        config:
-          external_location: read_csv(
-            'https://static.ons.gov.uk/datasets/7b1bfcea-e74e-486f-9c7d-65c3f9b264f3/TS011-2021-6-filtered-2025-06-28T09:28:22Z.csv',
-            delim=',',
-            quote='"'
-            )
-
   - name: population
     tables:
-      - name: TS011-2021-6-filtered-2025-06-28T09_28_22Z.csv
+      - name: TS007-2021-1-filtered-2025-06-28T09_43_09Z.csv
         config:
           external_location: read_csv(
             'https://static.ons.gov.uk/datasets/9252f297-0c64-4cdb-bc36-8af5be394455/TS007-2021-1-filtered-2025-06-28T09:43:09Z.csv',
