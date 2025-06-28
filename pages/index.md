@@ -149,7 +149,7 @@ WHERE type = '${inputs.selected_type}'
 Asset class: {inputs.selected_asset_class_lad.value}
 <Grid cols=2>
 <Group>
-<p class="text-sm text-gray-500">Click an area on map to view series</p>
+<Note>Click an area on map to view series</Note>
 <AreaMap
   data={lad_current_filtered}
   areaCol="area_code"
@@ -164,6 +164,8 @@ Asset class: {inputs.selected_asset_class_lad.value}
   startingLat=52.23967
   startingLong=0.0
   name=lad_current_map
+  legend=true
+  filter=true
 />
 </Group>
 
