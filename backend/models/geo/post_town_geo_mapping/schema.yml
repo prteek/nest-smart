@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: post_town_geo_mapping
+    description: "Parry down sub geos from post town for consistency in membership"
+    config:
+        materialized: external
+        location: 's3://db.geo/post_town_geo_mapping/data'
+        format: parquet
+        glue_register: true
+        glue_database: geo
