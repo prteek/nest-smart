@@ -1,8 +1,8 @@
-select lower(GEOGRAPHY_CODE) as msoa
-, lower(GEOGRAPHY_NAME) as msoa_name
-, lower(C2021_ACCTYPE_6_NAME) as accommodation_type
-, lower(C2021_ETH_8_NAME) as ethnicity
-, OBS_VALUE as number_of_people
+select lower("Middle layer Super Output Areas Code") as msoa
+, lower("Middle layer Super Output Areas") as msoa_name
+, lower("Accommodation type (5 categories)") as accommodation_type
+, lower("Ethnic group (8 categories)") as ethnicity
+, Observation as number_of_people
 from {{ source("population", "msoa-ethnicity-accommodation") }}
-where (accommodation_type <> 'total')
-and (ethnicity <> 'total')
+where (lower(accommodation_type) <> 'does not apply')
+and (lower(ethnicity) <> 'does not apply')
