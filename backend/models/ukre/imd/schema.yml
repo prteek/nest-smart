@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: imd
+    description: "Reading in excel data from ONS"
+    config:
+        materialized: external
+        location: 's3://db.ukre/imd/data'
+        format: parquet
+        glue_register: true
+        glue_database: ukre
