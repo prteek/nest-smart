@@ -5,6 +5,6 @@ select
 from (
     select
         post_town,
-        ST_FlipCoordinates(geom) AS geometry  -- Source CRS needs conversion
+        geom AS geometry  -- Source CRS is correct
     from {{ source('geojsons', 'dim_post_town.geojson') }}
 )
