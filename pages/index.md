@@ -115,6 +115,7 @@ select upper(area_name) as area_name
 , asset_class
 , type
 , price_current
+, concat('local_authority_districts/', area_name) AS link_col
 FROM ${lad_current}
 WHERE asset_class='${inputs.selected_asset_class_lad.value}'
     and type = '${inputs.selected_type}'
@@ -156,9 +157,11 @@ Asset class: {inputs.selected_asset_class_lad.value}
   geoJsonUrl="https://public-geoms.s3-eu-west-1.amazonaws.com/lad_simple.geojson"
   geoId="LAD24CD"
   value="price_current"
+  tooltipType=click
   tooltip={[
     {id: 'area_name', showColumnName: false},
-    {id: 'price_current', fmt: 'gbp', valueClass: 'text-[green]', showColumnName: false}
+    {id: 'price_current', fmt: 'gbp', valueClass: 'text-[green]', showColumnName: false},
+    {id: 'link_col', showColumnName: false, contentType: 'link', linkLabel: 'Explore more', valueClass: 'font-bold mt-1'}
     ]}
   startingZoom=5
   startingLat=52.23967
