@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: msoa_ethnicity_accommodation
+    description: "Reading in data from ONS"
+    config:
+        materialized: external
+        location: 's3://db.ukre/msoa_ethnicity_accommodation/data'
+        format: parquet
+        glue_register: true
+        glue_database: ukre
