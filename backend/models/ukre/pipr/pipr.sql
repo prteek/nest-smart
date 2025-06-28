@@ -10,5 +10,5 @@ else cast("Rental price semidetached" as double) end as semi_detached_price
 else cast("Rental price terraced" as double) end as terraced_price
 , case when "Rental price flat / maisonette" = '[x]' then null
 else cast("Rental price flat / maisonette" as double) end as flat_price
-FROM {{ source("priceindexofprivaterentsukmonthlypricestatistics", "priceindexofprivaterentsukmonthlypricestatistics.xlsx") }}
+FROM {{ source("price-index-of-private-rents", "priceindexofprivaterentsukmonthlypricestatistics.xlsx") }}
 where time_period is not null
