@@ -20,7 +20,7 @@ select upper('${params.lad_name}') as lad_name
 />
 
 ```lad_post_town_filtered
-select distinct lad_name
+select distinct lad_name as local_authority
 , post_town
 from ukre.post_town_geo_mapping
 where lad_name = '${inputs.selected_local_authority.value}'
@@ -73,8 +73,8 @@ group by post_town, accommodation_type
   geoId="post_town"
   value="post_town"
   tooltip={[
-    {id: 'lad_name', showColumnName: false},
-    {id: 'post_town', showColumnName: false}
+    {id: 'local_authority', valueClass: 'text-l font-semibold'},
+    {id: 'post_town', valueClass: 'font mt-1'}
     ]}
   startingZoom=8
   opacity=0.5
