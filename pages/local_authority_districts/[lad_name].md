@@ -1,3 +1,8 @@
+---
+queries:
+    - lad_list.sql
+---
+
 
 ```params_lad_name
 select upper('${params.lad_name}') as lad_name
@@ -5,10 +10,6 @@ select upper('${params.lad_name}') as lad_name
 
 # {params_lad_name[0].lad_name}
 
-```lad_list
-select distinct lad_name as lad_name
-from ukre.post_town_geo_mapping
-```
 <Dropdown
     data={lad_list}
     name=selected_local_authority
