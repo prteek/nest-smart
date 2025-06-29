@@ -7,12 +7,13 @@ queries:
     - post_town_ethnicity.sql
     - post_town_accommodation_type.sql
     - lad_post_town_filtered.sql
+    - post_town_age_groups.sql
 
 ---
 
 
 ```params_lad_name
-select upper('${params.lad_name}') as lad_name
+select '${params.lad_name}' as lad_name
 ```
 
 ## {params_lad_name[0].lad_name}
@@ -38,6 +39,18 @@ select upper('${params.lad_name}') as lad_name
     ]}
   startingZoom=8
   opacity=0.5
+  height=450
+  title='Post towns in Local Authority'
+/>
+
+<Heatmap
+data={post_town_age_groups}
+y=post_town
+x=age_group
+value=proportion_of_people
+valueFmt=pct
+xLabelRotation=-45
+title='Age'
 />
 
 </Grid>
@@ -50,6 +63,7 @@ x=ethnicity
 value=proportion_of_people
 valueFmt=pct
 xLabelRotation=-45
+title='Ethnicity'
 />
 
 <Heatmap
@@ -59,5 +73,6 @@ x=accommodation_type
 value=proportion_of_people
 valueFmt=pct
 xLabelRotation=-45
+title='Accommodation type'
 />
 </Grid>
