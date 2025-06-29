@@ -1,5 +1,4 @@
 ---
-title: Nest Smart
 queries:
     - uk_current.sql
     - lad_current.sql
