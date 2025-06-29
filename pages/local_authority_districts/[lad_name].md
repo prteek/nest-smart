@@ -1,6 +1,6 @@
 ---
 queries:
-    - lad_list.sql
+    - local_authority_districts.sql
 ---
 
 
@@ -11,7 +11,7 @@ select upper('${params.lad_name}') as lad_name
 # {params_lad_name[0].lad_name}
 
 <Dropdown
-    data={lad_list}
+    data={local_authority_districts}
     name=selected_local_authority
     value=lad_name
     title="Select a Local Authority"
