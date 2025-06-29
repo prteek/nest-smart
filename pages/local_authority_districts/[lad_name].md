@@ -6,6 +6,7 @@ queries:
     - post_town_ethnicity_accommodation.sql
     - post_town_ethnicity.sql
     - post_town_accommodation_type.sql
+    - lad_post_town_filtered.sql
 
 ---
 
@@ -23,14 +24,6 @@ select upper('${params.lad_name}') as lad_name
     title="Select a Local Authority"
     defaultValue={params.lad_name}
 />
-
-```lad_post_town_filtered
-select distinct lad_name as local_authority
-, post_town
-from ukre.post_town_geo_mapping
-where lad_name = '${inputs.selected_local_authority.value}'
-```
-
 
 <Grid cols=2>
 <AreaMap
