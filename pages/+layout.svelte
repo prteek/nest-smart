@@ -9,6 +9,7 @@
 neverShowQueries=true
 builtWithEvidence=false
 githubRepo=https://github.com/prteek/nest-smart
+title='Nest Smart'
 >
 	<slot slot="content" />
 </EvidenceDefaultLayout>
