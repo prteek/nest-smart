@@ -1,5 +1,6 @@
 ---
-hideHeader: true
+title: Nest Smart
+hide_title: true
 queries:
    - local_authority_districts.sql
 sidebar_link: false

@@ -1,4 +1,6 @@
 ---
+title: Nest Smart
+hide_title: true
 queries:
     - uk_current.sql
     - lad_current.sql
