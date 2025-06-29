@@ -1,6 +1,7 @@
 ---
 queries:
     - local_authority_districts.sql
+
 ---
 
 
@@ -8,7 +9,7 @@ queries:
 select upper('${params.lad_name}') as lad_name
 ```
 
-# {params_lad_name[0].lad_name}
+### {params_lad_name[0].lad_name}
 
 <Dropdown
     data={local_authority_districts}
