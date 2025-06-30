@@ -27,6 +27,12 @@ sources:
             'local_files/Counties_and_Unitary_Authorities_December_2024_Boundaries_UK_BFC_3348038940373313033.geojson'
             )
 
+      - name: Regions_December_2024_Boundaries_EN_BFC_1195854647342073399.geojson
+        config:
+          external_location: st_read(
+            'local_files/Regions_December_2024_Boundaries_EN_BFC_1195854647342073399.geojson'
+            )
+
       - name: dim_post_town.geojson
         config:
           external_location: "st_read(

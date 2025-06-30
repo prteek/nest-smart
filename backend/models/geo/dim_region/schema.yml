@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: dim_region
+
+    description: "Loading GEOJSON data"
+    config:
+        materialized: external
+        location: 's3://db.geo/dim_region/data'
+        format: parquet
+        glue_register: true
+        glue_database: geo
