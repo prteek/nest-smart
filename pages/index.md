@@ -170,6 +170,7 @@ Asset class: {inputs.selected_asset_class_lad.value}
   name=lad_current_map
   legend=true
   filter=true
+  opacity=0.5
 />
 </Group>
 
