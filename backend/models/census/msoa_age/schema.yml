@@ -8,4 +8,4 @@ models:
         location: 's3://db.census/msoa_age/data'
         format: parquet
         glue_register: true
-        glue_database: ukre
+        glue_database: census
