@@ -1,11 +1,11 @@
 version: 2
 
 models:
-  - name: msoa_age
+  - name: msoa_ethnicity_accommodation
     description: "Reading in data from ONS"
     config:
         materialized: external
-        location: 's3://db.ukre/msoa_age/data'
+        location: 's3://db.census/msoa_ethnicity_accommodation/data'
         format: parquet
         glue_register: true
         glue_database: ukre
