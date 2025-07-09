@@ -111,16 +111,18 @@ from ${lad_current}
 />
 
 ```lad_current_filtered
-select upper(area_name) as area_name
-, upper(area_code) as area_code
-, asset_class
-, type
-, price_current
-, concat('local_authority_districts/', area_name) AS link_col
-FROM ${lad_current}
-WHERE asset_class='${inputs.selected_asset_class_lad.value}'
-    and type = '${inputs.selected_type}'
-    and not area_name in ('kensington and chelsea', 'westminster')
+select upper(a.area_name) as area_name
+, upper(a.area_code) as area_code
+, a.asset_class
+, a.type
+, a.price_current
+, a.price_current/b.price_current as "Price ratio to UK"
+, concat('local_authority_districts/', a.area_name) AS link_col
+FROM ${lad_current} a inner join ${uk_current} b on a.asset_class = b.asset_class
+    and a.type = b.type
+WHERE a.asset_class='${inputs.selected_asset_class_lad.value}'
+    and a.type = '${inputs.selected_type}'
+
 ```
 
 ```lad_indices_long_filtered
@@ -157,11 +159,13 @@ Asset class: {inputs.selected_asset_class_lad.value}
   areaCol="area_code"
   geoJsonUrl="https://public-geoms.s3-eu-west-1.amazonaws.com/lad_simple.geojson"
   geoId="LAD24CD"
-  value="price_current"
+  value="Price ratio to UK"
+  valueFmt="pct"
   tooltipType=click
   tooltip={[
     {id: 'area_name', showColumnName: false},
-    {id: 'price_current', fmt: 'gbp', valueClass: 'text-[green]', showColumnName: false},
+    {id: 'price_current', fmt: 'gbp', title: 'Current price', valueClass: 'text-[green]', showColumnName: true},
+    {id: 'Price ratio to UK', formatColumnTitle: false, fmt: 'pct'},
     {id: 'link_col', showColumnName: false, contentType: 'link', linkLabel: 'Explore more', valueClass: 'font-bold mt-1'}
     ]}
   startingZoom=5
@@ -171,6 +175,11 @@ Asset class: {inputs.selected_asset_class_lad.value}
   legend=true
   filter=true
   opacity=0.5
+  colorPalette={['4A8EBA', '#C65D47']}
+  min=0.5
+  max=2
+  selectedColor="#38B2AC"
+  selectedOpacity=0.7
 />
 </Group>
 
