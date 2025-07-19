@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: combined_indices_long
+  - name: house_price_indices
     description: "Merging all indices and creating a long format table for analytics"
     config:
         materialized: table
