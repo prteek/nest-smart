@@ -9,5 +9,5 @@ select cast("Date" as date) as time_period
 , "FlatPrice" as flat_price
 , "NewPrice" as new_build_price
 , "OldPrice" as non_new_build_price
-from {{ source("house-price-index-data", "UK-HPI-full-file-2025-04.csv") }}
+from {{ source("ons_housing", "UK-HPI-full-file-2025-04.csv") }}
 where time_period is not null

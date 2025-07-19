@@ -8,5 +8,5 @@ from (
         lower(MSOA21CD) AS msoa,
         lower(MSOA21NM) AS msoa_name,
         ST_FlipCoordinates(st_transform(geom, 'EPSG:27700', 'EPSG:4326')) AS geometry  -- Source CRS needs conversion and flipping
-    from {{ source('geojsons', 'MOSA_2021_EW_BFC_V6_8073017919673588333.geojson') }}
+    from {{ source('geo', 'MOSA_2021_EW_BFC_V6_8073017919673588333.geojson') }}
 )

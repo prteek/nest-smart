@@ -6,5 +6,5 @@ from (
     select
         post_town,
         geom AS geometry  -- Source CRS is correct
-    from {{ source('geojsons', 'dim_post_town.geojson') }}
+    from {{ source('geo', 'dim_post_town.geojson') }}
 )
