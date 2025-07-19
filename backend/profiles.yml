@@ -14,7 +14,7 @@ dev:
     ukre:
       catalog: AwsDataCatalog
       region_name: eu-west-1
-      s3_data_dir: s3://db.ukre
+      s3_data_dir: s3://bkt.product
       s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
       s3_data_naming: table_unique
       schema: ukre
@@ -24,7 +24,7 @@ dev:
     geo:
       catalog: AwsDataCatalog
       region_name: eu-west-1
-      s3_data_dir: s3://db.geo
+      s3_data_dir: s3://bkt.standard
       s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
       s3_data_naming: table_unique
       schema: geo
@@ -34,10 +34,20 @@ dev:
     census:
       catalog: AwsDataCatalog
       region_name: eu-west-1
-      s3_data_dir: s3://db.census
+      s3_data_dir: s3://bkt.standard
       s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
       s3_data_naming: table_unique
       schema: census
+      threads: 1
+      type: athena
+
+    ons_indices:
+      catalog: AwsDataCatalog
+      region_name: eu-west-1
+      s3_data_dir: s3://bkt.standard
+      s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
+      s3_data_naming: table_unique
+      schema: ons_indices
       threads: 1
       type: athena
 
