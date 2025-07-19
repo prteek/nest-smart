@@ -5,7 +5,7 @@ models:
     description: "Reading in data from ONS"
     config:
         materialized: external
-        location: 's3://db.ukre/hpi/data'
+        location: 's3://bkt.standard/ons_housing/hpi/data'
         format: parquet
         glue_register: true
-        glue_database: ukre
+        glue_database: ons_housing
