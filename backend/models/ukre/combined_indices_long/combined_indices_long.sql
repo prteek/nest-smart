@@ -3,31 +3,31 @@ select time_period
 , area_name
 , average_price as price
 , 'all' as asset_class
-from {{ ref('hpi') }}
+from {{ source('ons_housing', 'hpi') }}
 union
 select time_period
 , area_name
 , detached_price as price
 , 'detached' as asset_class
-from {{ ref('hpi') }}
+from {{ source('ons_housing', 'hpi') }}
 union
 select time_period
 , area_name
 , semi_detached_price as price
 , 'semi_detached' as asset_class
-from {{ ref('hpi') }}
+from {{ source('ons_housing', 'hpi') }}
 union
 select time_period
 , area_name
 , terraced_price as price
 , 'terraced' as asset_class
-from {{ ref('hpi') }}
+from {{ source('ons_housing', 'hpi') }}
 union
 select time_period
 , area_name
 , flat_price as price
 , 'flat' as asset_class
-from {{ ref('hpi') }}
+from {{ source('ons_housing', 'hpi') }}
 )
 ,
 pipr_long as (
@@ -35,31 +35,31 @@ select time_period
 , area_name
 , average_price as price
 , 'all' as asset_class
-from {{ ref('pipr') }}
+from {{ source('ons_housing', 'pipr') }}
 union
 select time_period
 , area_name
 , detached_price as price
 , 'detached' as asset_class
-from {{ ref('pipr') }}
+from {{ source('ons_housing', 'pipr') }}
 union
 select time_period
 , area_name
 , semi_detached_price as price
 , 'semi_detached' as asset_class
-from {{ ref('pipr') }}
+from {{ source('ons_housing', 'pipr') }}
 union
 select time_period
 , area_name
 , terraced_price as price
 , 'terraced' as asset_class
-from {{ ref('pipr') }}
+from {{ source('ons_housing', 'pipr') }}
 union
 select time_period
 , area_name
 , flat_price as price
 , 'flat' as asset_class
-from {{ ref('pipr') }}
+from {{ source('ons_housing', 'pipr') }}
 )
 ,
 combined as (
