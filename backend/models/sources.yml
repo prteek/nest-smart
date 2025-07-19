@@ -98,3 +98,22 @@ sources:
             'https://static.ons.gov.uk/datasets/de1505bb-58df-4d3d-b105-c4ce7a3d69a1/RM026-2021-1-filtered-2025-06-28T23:14:26Z.csv',
             escape='"'
             )
+
+
+  - name: geo
+    tables:
+      - name: dim_country
+      - name: dim_region
+      - name: dim_lad
+      - name: dim_cua
+      - name: dim_post_town
+      - name: dim_msoa
+      - name: dim_lsoa
+      - name: dim_post_code
+
+
+  - name: ukre
+    tables:
+      - name: hpi
+      - name: imd
+      - name: pipr
