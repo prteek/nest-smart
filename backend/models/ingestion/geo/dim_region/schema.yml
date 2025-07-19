@@ -6,7 +6,7 @@ models:
     description: "Loading GEOJSON data"
     config:
         materialized: external
-        location: 's3://db.geo/dim_region/data'
+        location: 's3://bkt.standard/geo/dim_region/data'
         format: parquet
         glue_register: true
         glue_database: geo
