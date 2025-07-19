@@ -1,8 +1,17 @@
 version: 2
 sources:
 
-  - name: geojsons
+  - name: geo
     tables:
+      - name: dim_country
+      - name: dim_region
+      - name: dim_lad
+      - name: dim_cua
+      - name: dim_post_town
+      - name: dim_msoa
+      - name: dim_lsoa
+      - name: dim_post_code
+
       - name: Local_Authority_Districts_May_2024_Boundaries_UK_BFC_-6788913184658251542.geojson
         config:
           external_location: st_read(
@@ -45,23 +54,23 @@ sources:
             'local_files/dim_post_town.geojson'
             )"
 
-  - name: doogal
-    tables:
-      - name: postcodes.csv
+     - name: postcodes.csv
         description: "Downloaded from https://www.doogal.co.uk/files/postcodes.zip"
         config:
           external_location: "local_files/postcodes.csv"
 
-  - name: house-price-index-data
+
+  - name: ons_housing
     tables:
+      - name: hpi
+      - name: pipr
+
       - name: UK-HPI-full-file-2025-04.csv
         config:
           external_location: read_csv(
             'https://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/UK-HPI-full-file-2025-04.csv'
             )
 
-  - name: price-index-of-private-rents
-    tables:
       - name: priceindexofprivaterentsukmonthlypricestatistics.xlsx
         config:
           external_location: read_xlsx(
@@ -72,8 +81,13 @@ sources:
             , all_varchar=true
             )
 
-  - name: index-of-multiple-deprivation
+  - name: ons_census2021
     tables:
+      - name: imd
+      - name: pipr
+      - name: msoa_age
+      - name: msoa_ethnicity_accommodation
+
       - name: TS011-2021-6-filtered-2025-06-28T09_28_22Z.csv
         config:
           external_location: read_csv(
@@ -82,8 +96,6 @@ sources:
             quote='"'
             )
 
-  - name: population
-    tables:
       - name: TS007-2021-1-filtered-2025-06-28T09_43_09Z.csv
         config:
           external_location: read_csv(
@@ -92,33 +104,9 @@ sources:
             quote='"'
             )
 
-      - name: msoa-ethnicity-accommodation
+      - name: RM026-2021-1-filtered-2025-06-28T23_14_26Z.csv
         config:
           external_location: read_csv(
             'https://static.ons.gov.uk/datasets/de1505bb-58df-4d3d-b105-c4ce7a3d69a1/RM026-2021-1-filtered-2025-06-28T23:14:26Z.csv',
             escape='"'
             )
-
-
-  - name: geo
-    tables:
-      - name: dim_country
-      - name: dim_region
-      - name: dim_lad
-      - name: dim_cua
-      - name: dim_post_town
-      - name: dim_msoa
-      - name: dim_lsoa
-      - name: dim_post_code
-
-  - name: ons_housing
-    tables:
-      - name: hpi
-      - name: pipr
-
-  - name: ons_census2021
-    tables:
-      - name: imd
-      - name: pipr
-      - name: msoa_age
-      - name: msoa_ethnicity_accommodation
