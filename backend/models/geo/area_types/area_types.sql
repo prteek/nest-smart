@@ -22,7 +22,7 @@ select area_name
 , area_code
 , 'country' as type
 from {{ source('ukre', 'hpi') }}
-where area_name in ('united kingdom', 'great britain', 'england', 'wales', 'scotland', 'northern ireland')
+where area_name in ('england', 'wales', 'scotland', 'northern ireland')
 union
 select area_name
 , area_code
