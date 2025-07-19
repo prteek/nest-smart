@@ -21,11 +21,11 @@ union
 select area_name
 , area_code
 , 'country' as type
-from {{ source('ukre', 'hpi') }}
+from {{ source('ons_housing', 'hpi') }}
 where area_name in ('england', 'wales', 'scotland', 'northern ireland')
 union
 select area_name
 , area_code
 , 'region' as type
-from {{ source('ukre', 'hpi') }}
+from {{ source('ons_housing', 'hpi') }}
 where area_name in ('north east', 'north west', 'yorkshire and the humber', 'east midlands', 'west midlands', 'east of england', 'london', 'south east', 'south west')
