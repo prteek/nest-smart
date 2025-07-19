@@ -111,9 +111,14 @@ sources:
       - name: dim_lsoa
       - name: dim_post_code
 
-
-  - name: ukre
+  - name: ons_housing
     tables:
       - name: hpi
+      - name: pipr
+
+  - name: ons_census2021
+    tables:
       - name: imd
       - name: pipr
+      - name: msoa_age
+      - name: msoa_ethnicity_accommodation
