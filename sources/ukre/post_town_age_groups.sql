@@ -8,5 +8,5 @@ when age between 25 and 44 then 34.5
 when age between 45 and 64 then 54.5
 else 82.5 end as age_mean
 , sum(number_of_people) as number_of_people
-from census.msoa_age a inner join geo.post_town_geo_mapping b on a.msoa = b.msoa
+from ons_census2021.msoa_age a inner join geo.post_town_geo_mapping b on a.msoa = b.msoa
 group by 1,2,3

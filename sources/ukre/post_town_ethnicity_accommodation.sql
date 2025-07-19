@@ -30,6 +30,6 @@ end as accommodation_type_order
         else 6
     end as ethnicity_order
 , sum(number_of_people) as number_of_people
-from census.msoa_ethnicity_accommodation a
+from ons_census2021.msoa_ethnicity_accommodation a
     inner join geo.post_town_geo_mapping b on a.msoa = b.msoa
 group by 1,2,3,4,5
