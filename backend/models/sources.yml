@@ -54,10 +54,10 @@ sources:
             'local_files/dim_post_town.geojson'
             )"
 
-     - name: postcodes.csv
+      - name: postcodes.csv
         description: "Downloaded from https://www.doogal.co.uk/files/postcodes.zip"
         config:
-          external_location: "local_files/postcodes.csv"
+          external_location: 'local_files/postcodes.csv'
 
 
   - name: ons_housing
