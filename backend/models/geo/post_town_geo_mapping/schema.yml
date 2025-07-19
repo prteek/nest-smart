@@ -4,8 +4,4 @@ models:
   - name: post_town_geo_mapping
     description: "Because post_town is a non standard geography, parry down geos to/from post_town for consistency in membership"
     config:
-        materialized: external
-        location: 's3://db.geo/post_town_geo_mapping/data'
-        format: parquet
-        glue_register: true
-        glue_database: geo
+        materialized: table
