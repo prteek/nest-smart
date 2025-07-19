@@ -4,8 +4,19 @@ models:
   - name: area_types
     description: "Defining area types for different geographies to filter results"
     config:
-        materialized: external
-        location: 's3://db.geo/area_types/data'
-        format: parquet
-        glue_register: true
-        glue_database: geo
+      materialized: table
+    columns:
+      - name: area_name
+        description: "Name of the area"
+        tests:
+          - not_null
+          - unique:
+              where: "type != 'post_town'"
+
+      - name: area_code
+        description: "ONS area codes"
+        tests:
+          - not_null:
+              where: "type != 'post_town'"
+          - unique:
+              where: "type != 'post_town'"
