@@ -141,7 +141,7 @@ if __name__ == '__main__':
 
     key = 'land_registry/' + lr_url.split('/')[-1]
 
-    bucket = 'db.land-reg'
+    bucket = 'bkt.raw'
     location = main(
         bucket=bucket,
         key=key,

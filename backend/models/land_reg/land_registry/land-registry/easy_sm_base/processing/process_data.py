@@ -10,7 +10,7 @@ wr.engine.set('python')
 
 boto3_session = boto3.Session(region_name='eu-west-1')
 
-LAND_REGISTRY_PATH = "s3://db.land-reg/land_registry"
+INPUT_PATH = "s3://bkt.raw/land_registry"
 
 INPUT_SCHEMA = {
     "id": str,
@@ -179,7 +179,7 @@ def create_etl_dt(df):
 if __name__ == '__main__':
     #%%
 
-    filepath = os.path.join(LAND_REGISTRY_PATH, 'pp-complete.csv')
+    filepath = os.path.join(INPUT_PATH, 'pp-complete.csv')
     df_raw = pd.read_csv(filepath, header=None)
 
     #%%
@@ -209,8 +209,8 @@ if __name__ == '__main__':
 
 
     #%%
-
-    path = os.path.join(LAND_REGISTRY_PATH, 'land_registry_transactions')
+    OUTPUT_PATH = "s3://bkt.standard/land_registry"
+    path = os.path.join(OUTPUT_PATH, 'land_registry_transactions')
 
     wr.s3.to_csv(
         df_processed
