@@ -5,7 +5,7 @@ models:
     description: "Reading in data from ONS"
     config:
         materialized: external
-        location: 's3://bkt.standard/census/msoa_age/data'
+        location: 's3://bkt.standard/ons_census2021/msoa_age/data'
         format: parquet
         glue_register: true
-        glue_database: census
+        glue_database: ons_census2021
