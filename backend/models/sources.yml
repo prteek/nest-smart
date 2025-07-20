@@ -11,6 +11,8 @@ sources:
       - name: dim_msoa
       - name: dim_lsoa
       - name: dim_post_code
+      - name: area_types
+      - name: post_town_geo_mapping
 
       - name: Local_Authority_Districts_May_2024_Boundaries_UK_BFC_-6788913184658251542.geojson
         config:
