@@ -42,7 +42,6 @@ jobs:
           easy_sm push -a land-registry
 
 
-jobs:
   download:
     needs: build
     runs-on: ubuntu-latest
