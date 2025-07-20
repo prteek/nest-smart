@@ -15,7 +15,6 @@ jobs:
     env:
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       SAGEMAKER_EXECUTION_ROLE: ${{ secrets.SAGEMAKER_EXECUTION_ROLE }}
-      AWS_PROFILE: ${{ secrets.AWS_PROFILE }}
 
     defaults:
       run:
@@ -28,7 +27,7 @@ jobs:
       - uses: mcblair/configure-aws-profile-action@v1.0.0
         with:
             role-arn: ${{ secrets.GH_EASY_SM_ROLE }}
-            profile-name: ${{ secrets.AWS_PROFILE }}
+            profile-name: personal
             region: ${{ secrets.AWS_DEFAULT_REGION }}
 
       - name: Set up Python
