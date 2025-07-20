@@ -2,6 +2,7 @@ version: 2
 sources:
 
   - name: geo
+    description: "All source files in s3://bkt.raw/geo/"
     tables:
       - name: dim_country
       - name: dim_region
@@ -88,11 +89,11 @@ sources:
   - name: ons_census2021
     tables:
       - name: imd
-      - name: pipr
       - name: msoa_age
       - name: msoa_ethnicity_accommodation
 
       - name: TS011-2021-6-filtered-2025-06-28T09_28_22Z.csv
+        description: "LSOA level data, downloaded from https://www.ons.gov.uk/datasets/TS011/editions/2021/versions/6#variables"
         config:
           external_location: read_csv(
             'https://static.ons.gov.uk/datasets/7b1bfcea-e74e-486f-9c7d-65c3f9b264f3/TS011-2021-6-filtered-2025-06-28T09:28:22Z.csv',
@@ -101,6 +102,7 @@ sources:
             )
 
       - name: TS007-2021-1-filtered-2025-06-28T09_43_09Z.csv
+        description: "Age by single year downloaded from https://www.ons.gov.uk/datasets/TS007/editions/2021/versions/3#variables"
         config:
           external_location: read_csv(
             'https://static.ons.gov.uk/datasets/9252f297-0c64-4cdb-bc36-8af5be394455/TS007-2021-1-filtered-2025-06-28T09:43:09Z.csv',
@@ -109,6 +111,7 @@ sources:
             )
 
       - name: RM026-2021-1-filtered-2025-06-28T23_14_26Z.csv
+        description: "MSOA level data downloaded from https://www.ons.gov.uk/datasets/RM026/editions/2021/versions/1#variables"
         config:
           external_location: read_csv(
             'https://static.ons.gov.uk/datasets/de1505bb-58df-4d3d-b105-c4ce7a3d69a1/RM026-2021-1-filtered-2025-06-28T23:14:26Z.csv',
