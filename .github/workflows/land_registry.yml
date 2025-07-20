@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Land registry
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
     paths: ['backend/models/land_reg/**', '.github/workflows/land_registry.yml']
 
 jobs:
-  preprocess-train-deploy:
+  download-and-process:
     runs-on: ubuntu-latest
     env:
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
