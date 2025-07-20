@@ -12,10 +12,6 @@ permissions:
 jobs:
   download-and-process:
     runs-on: ubuntu-latest
-    env:
-      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-      SAGEMAKER_EXECUTION_ROLE: ${{ secrets.SAGEMAKER_EXECUTION_ROLE }}
-
     defaults:
       run:
         working-directory: ./backend/models/land_reg/land_registry
@@ -48,7 +44,17 @@ jobs:
       - name: Download data
         run: |
           easy_sm cloud process -f download_land_registry.py -a land-registry -n land-registry-download -r $SAGEMAKER_EXECUTION_ROLE -e ml.m4.10xlarge
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          SAGEMAKER_EXECUTION_ROLE: ${{ secrets.SAGEMAKER_EXECUTION_ROLE }}
 
       - name: Process data
         run: |
           easy_sm cloud process -e ml.m4.10xlarge -c 1 -r $SAGEMAKER_EXECUTION_ROLE -n lr-process -f process_data.py -a land-registry
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          SAGEMAKER_EXECUTION_ROLE: ${{ secrets.SAGEMAKER_EXECUTION_ROLE }}
