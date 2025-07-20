@@ -1,0 +1,43 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: 'main'
+    paths: ['backend/models/land_reg/**', '.github/workflows/land_registry.yml']
+
+jobs:
+  preprocess-train-deploy:
+    runs-on: ubuntu-latest
+    env:
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+      SAGEMAKER_EXECUTION_ROLE: ${{ secrets.SAGEMAKER_EXECUTION_ROLE }}
+
+    defaults:
+      run:
+        working-directory: ./backend/models/land_reg
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -U easy-sm awscli --no-cache
+
+      - name: Docker setup for the app to run on Sagemaker
+        run: |
+          easy_sm build -a land-registry
+          easy_sm push -a land-registry
+
+      - name: Download data
+        run: |
+          easy_sm cloud process -f download_land_registry.py -a land-registry -n land-registry-download -r $SAGEMAKER_EXECUTION_ROLE -e ml.m4.10xlarge
+
+      - name: Process data
+        run: |
+          easy_sm cloud process -e ml.m4.10xlarge -c 1 -r $SAGEMAKER_EXECUTION_ROLE -n lr-process -f process_data.py -a land-registry
