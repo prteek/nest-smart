@@ -10,7 +10,7 @@ permissions:
   id-token: write
 
 jobs:
-  download-and-process:
+  build:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -22,9 +22,9 @@ jobs:
 
       - uses: mcblair/configure-aws-profile-action@v1.0.0
         with:
-            role-arn: ${{ secrets.GH_EASY_SM_ROLE }}
-            profile-name: personal
-            region: ${{ secrets.AWS_DEFAULT_REGION }}
+          role-arn: ${{ secrets.GH_EASY_SM_ROLE }}
+          profile-name: personal
+          region: ${{ secrets.AWS_DEFAULT_REGION }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -41,6 +41,35 @@ jobs:
           easy_sm build -a land-registry
           easy_sm push -a land-registry
 
+
+jobs:
+  download:
+    needs: build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend/models/land_reg/land_registry
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: mcblair/configure-aws-profile-action@v1.0.0
+        with:
+          role-arn: ${{ secrets.GH_EASY_SM_ROLE }}
+          profile-name: personal
+          region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -U easy-sm awscli --no-cache
+
       - name: Download data
         run: |
           easy_sm cloud process -f download_land_registry.py -a land-registry -n land-registry-download -r $SAGEMAKER_EXECUTION_ROLE -e ml.m4.10xlarge
@@ -49,6 +78,34 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           SAGEMAKER_EXECUTION_ROLE: ${{ secrets.SAGEMAKER_EXECUTION_ROLE }}
+
+
+  process:
+    needs: [build, download]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend/models/land_reg/land_registry
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: mcblair/configure-aws-profile-action@v1.0.0
+        with:
+          role-arn: ${{ secrets.GH_EASY_SM_ROLE }}
+          profile-name: personal
+          region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -U easy-sm awscli --no-cache
 
       - name: Process data
         run: |
