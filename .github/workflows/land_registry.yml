@@ -5,6 +5,10 @@ on:
     branches: 'main'
     paths: ['backend/models/land_reg/**', '.github/workflows/land_registry.yml']
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   download-and-process:
     runs-on: ubuntu-latest
@@ -19,6 +23,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - uses: mcblair/configure-aws-profile-action@v1.0.0
+        with:
+            role-arn: ${{ secrets.GH_EASY_SM_ROLE }}
+            profile-name: personal
+            region: ${{ secrets.AWS_DEFAULT_REGION }}
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
