@@ -86,6 +86,18 @@ sources:
             , all_varchar=true
             )
 
+      - name: housingaffordabilityratiosformiddlelayersuperoutputareas140624_table3.xlsx
+        description: "Downloaded from https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas"
+        config:
+          external_location: read_xlsx(
+            'https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas/current/housingaffordabilityratiosformiddlelayersuperoutputareas140624.xlsx'
+            , range = 'A4:AI'
+            , sheet='Table 3'
+            , stop_at_empty = true
+            , all_varchar=true
+            )
+
+
   - name: ons_census2021
     tables:
       - name: imd
