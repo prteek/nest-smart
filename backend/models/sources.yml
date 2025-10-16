@@ -90,7 +90,7 @@ sources:
         description: "Downloaded from https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas"
         config:
           external_location: read_xlsx(
-            'https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas/current/housingaffordabilityratiosformiddlelayersuperoutputareas140624.xlsx'
+            's3://bkt.standard/ons_housing/affordability/raw_file/housingaffordabilityratiosformiddlelayersuperoutputareas140624.xlsx'
             , range = 'A4:I'
             , sheet='Table 3'
             , stop_at_empty = true
@@ -98,6 +98,29 @@ sources:
             , header=true
             )
 
+      - name: housingaffordabilityratiosformiddlelayersuperoutputareas140624_table2.xlsx
+        description: "Downloaded from https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas"
+        config:
+          external_location: read_xlsx(
+            's3://bkt.standard/ons_housing/affordability/raw_file/housingaffordabilityratiosformiddlelayersuperoutputareas140624.xlsx'
+            , range = 'A4:E'
+            , sheet='Table 2'
+            , stop_at_empty = true
+            , all_varchar=true
+            , header=true
+            )
+
+      - name: housingaffordabilityratiosformiddlelayersuperoutputareas140624_table1.xlsx
+        description: "Downloaded from https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas"
+        config:
+          external_location: read_xlsx(
+            's3://bkt.standard/ons_housing/affordability/raw_file/housingaffordabilityratiosformiddlelayersuperoutputareas140624.xlsx'
+            , range = 'A4:I'
+            , sheet='Table 1'
+            , stop_at_empty = true
+            , all_varchar=true
+            , header=true
+            )
 
   - name: ons_census2021
     tables:
