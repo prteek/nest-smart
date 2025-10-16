@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: affordability_ratio
+    description: "Reading in data from ONS"
+    config:
+        materialized: external
+        location: 's3://bkt.standard/ons_housing/affordability_ratio/data'
+        format: parquet
+        glue_register: true
+        glue_database: ons_housing
+
+  - name: affordability_gross_income
+    description: "Reading in data from ONS"
+    config:
+        materialized: external
+        location: 's3://bkt.standard/ons_housing/affordability_gross_income/data'
+        format: parquet
+        glue_register: true
+        glue_database: ons_housing
+
+  - name: affordability_median_price
+    description: "Reading in data from ONS"
+    config:
+        materialized: external
+        location: 's3://bkt.standard/ons_housing/affordability_median_price/data'
+        format: parquet
+        glue_register: true
+        glue_database: ons_housing
+
+  - name: affordability
+    description: "Joining the 3 tables above"
+    config:
+        materialized: external
+        location: 's3://bkt.standard/ons_housing/affordability/data'
+        format: parquet
+        glue_register: true
+        glue_database: ons_housing
