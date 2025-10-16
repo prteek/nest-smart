@@ -32,7 +32,7 @@ models:
     description: "Joining the 3 tables above"
     config:
         materialized: external
-        location: 's3://bkt.standard/ons_housing/affordability/table/data'
+        location: 's3://bkt.standard/ons_housing/affordability/data'
         format: parquet
         glue_register: true
         glue_database: ons_housing
