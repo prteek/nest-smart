@@ -72,14 +72,14 @@ sources:
         description: "Downloaded from https://www.gov.uk/government/collections/uk-house-price-index-reports-2025"
         config:
           external_location: read_csv(
-            'https://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/UK-HPI-full-file-2025-05.csv'
+            'https://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/UK-HPI-full-file-2025-07.csv'
             )
 
       - name: priceindexofprivaterentsukmonthlypricestatistics.xlsx
         description: "Downloaded from https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics"
         config:
           external_location: read_xlsx(
-            'https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics/16july2025/priceindexofprivaterentsukmonthlypricestatistics2.xlsx'
+            'https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics/17september2025/priceindexofprivaterentsukmonthlypricestatistics.xlsx'
             , range = 'A3:AN'
             , sheet='Table 1'
             , stop_at_empty = true
