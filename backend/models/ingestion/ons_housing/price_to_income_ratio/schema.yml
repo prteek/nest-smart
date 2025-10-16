@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: price_to_income_ratio
+    description: "Reading in data from ONS"
+    config:
+        materialized: external
+        location: 's3://bkt.standard/ons_housing/price_to_income_ratio/data'
+        format: parquet
+        glue_register: true
+        glue_database: ons_housing
