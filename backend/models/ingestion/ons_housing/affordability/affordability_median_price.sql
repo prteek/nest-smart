@@ -11,4 +11,4 @@ select
     else cast("Terraced" as double) end as terraced_median_price,
     case when "Flats/Maisonettes" = '[x]' then null
     else cast("Flats/Maisonettes" as double) end as flats_maisonettes_median_price
-from {{ source("ons_housing", "housingaffordabilityratiosformiddlelayersuperoutputareas140624_table1.xlsx") }}
+from {{ source("ons_housing.raw", "housingaffordabilityratiosformiddlelayersuperoutputareas140624_table1.xlsx") }}
