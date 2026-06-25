@@ -4,6 +4,7 @@ sources:
   - name: geo
     description: "Geo tables"
     database: geo
+    schema: main
     tables:
       - name: dim_country
       - name: dim_region
@@ -73,17 +74,16 @@ sources:
       - name: pipr
 
       - name: UK-HPI-full-file-2025-04.csv
-        description: "Downloaded from https://www.gov.uk/government/collections/uk-house-price-index-reports-2025"
+        description: "Downloaded from https://www.gov.uk/government/collections/uk-house-price-index-reports-2026"
         config:
           external_location: read_csv(
-            'https://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/UK-HPI-full-file-2025-07.csv'
+            'https://publicdata.landregistry.gov.uk/market-trend-data/house-price-index-data/UK-HPI-full-file-2026-04.csv'
             )
 
       - name: priceindexofprivaterentsukmonthlypricestatistics.xlsx
         description: "Downloaded from https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics"
         config:
-          external_location: read_xlsx(
-            'https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics/17september2025/priceindexofprivaterentsukmonthlypricestatistics.xlsx'
+          external_location: read_xlsx('https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics/17june2026/priceindexofprivaterentsukmonthlypricestatistics13.xlsx'
             , range = 'A3:AN'
             , sheet='Table 1'
             , stop_at_empty = true
@@ -94,7 +94,7 @@ sources:
         description: "Downloaded from https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas"
         config:
           external_location: read_xlsx(
-            's3://bkt.standard/ons_housing/_affordability/raw_file/housingaffordabilityratiosformiddlelayersuperoutputareas140624.xlsx'
+            'https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas/current/housingaffordabilityratiosformiddlelayersuperoutputareas140624.xlsx'
             , range = 'A4:I'
             , sheet='Table 3'
             , stop_at_empty = true
@@ -106,7 +106,7 @@ sources:
         description: "Downloaded from https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas"
         config:
           external_location: read_xlsx(
-            's3://bkt.standard/ons_housing/_affordability/raw_file/housingaffordabilityratiosformiddlelayersuperoutputareas140624.xlsx'
+            'https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas/current/housingaffordabilityratiosformiddlelayersuperoutputareas140624.xlsx'
             , range = 'A4:E'
             , sheet='Table 2'
             , stop_at_empty = true
@@ -118,7 +118,7 @@ sources:
         description: "Downloaded from https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas"
         config:
           external_location: read_xlsx(
-            's3://bkt.standard/ons_housing/_affordability/raw_file/housingaffordabilityratiosformiddlelayersuperoutputareas140624.xlsx'
+            'https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/housing/datasets/housingaffordabilityratiosformiddlelayersuperoutputareas/current/housingaffordabilityratiosformiddlelayersuperoutputareas140624.xlsx'
             , range = 'A4:I'
             , sheet='Table 1'
             , stop_at_empty = true
