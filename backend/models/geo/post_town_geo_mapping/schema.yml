@@ -5,3 +5,4 @@ models:
     description: "Because post_town is a non standard geography, parry down geos to/from post_town for consistency in membership"
     config:
         materialized: table
+        database: geo

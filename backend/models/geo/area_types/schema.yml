@@ -5,6 +5,7 @@ models:
     description: "Defining area types for different geographies to filter results"
     config:
       materialized: table
+      database: geo
     columns:
       - name: area_name
         description: "Name of the area"
