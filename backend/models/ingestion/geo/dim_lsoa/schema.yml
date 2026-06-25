@@ -4,8 +4,5 @@ models:
   - name: dim_lsoa
     description: "Loading GEOJSON data"
     config:
-        materialized: external
-        location: 's3://bkt.standard/geo/dim_lsoa/data'
-        format: parquet
-        glue_register: true
-        glue_database: geo
+        materialized: table
+        database: geo

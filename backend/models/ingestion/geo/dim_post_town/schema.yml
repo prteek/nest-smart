@@ -4,8 +4,5 @@ models:
   - name: dim_post_town
     description: "Loading GEOJSON data"
     config:
-        materialized: external
-        location: 's3://bkt.standard/geo/dim_post_town/data'
-        format: parquet
-        glue_register: true
-        glue_database: geo
+        materialized: table
+        database: geo
