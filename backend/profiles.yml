@@ -1,56 +1,6 @@
 dev:
-  target: default
+  target: dev
   outputs:
-    default:
-      catalog: AwsDataCatalog
-      region_name: eu-west-1
-      s3_data_dir: s3://ds-dev-bkt
-      s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
-      s3_data_naming: table_unique
-      schema: default
-      threads: 1
-      type: athena
-
-    ukre:
-      catalog: AwsDataCatalog
-      region_name: eu-west-1
-      s3_data_dir: s3://bkt.product/ukre
-      s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
-      s3_data_naming: table_unique
-      schema: ukre
-      threads: 1
-      type: athena
-
-    geo:
-      catalog: AwsDataCatalog
-      region_name: eu-west-1
-      s3_data_dir: s3://bkt.standard/geo
-      s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
-      s3_data_naming: table_unique
-      schema: geo
-      threads: 1
-      type: athena
-
-    ons_census2021:
-      catalog: AwsDataCatalog
-      region_name: eu-west-1
-      s3_data_dir: s3://bkt.standard/ons_census2021
-      s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
-      s3_data_naming: table_unique
-      schema: ons_census2021
-      threads: 1
-      type: athena
-
-    ons_housing:
-      catalog: AwsDataCatalog
-      region_name: eu-west-1
-      s3_data_dir: s3://bkt.standard/ons_housing
-      s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
-      s3_data_naming: table_unique
-      schema: ons_housing
-      threads: 1
-      type: athena
-
     duck:
       type: duckdb
       path: /tmp/dbt.duckdb  # Path to your DuckDB database file
@@ -58,11 +8,10 @@ dev:
         - httpfs  # Required for reading files from S3/HTTP
         - parquet
         - spatial
-      secrets:
-        - type: s3
-          provider: credential_chain
       settings:
         s3_region: eu-west-1
+        s3_access_key_id: "{{ env_var('S3_ACCESS_KEY_ID') }}"
+        s3_secret_access_key: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"
 
     dev:
       type: duckdb
@@ -71,8 +20,6 @@ dev:
         - httpfs
         - parquet
         - spatial
-        - name: gsheets
-          repo: community
       settings:
         s3_region: eu-west-1
         s3_access_key_id: "{{ env_var('S3_ACCESS_KEY_ID') }}"
