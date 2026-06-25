@@ -63,3 +63,17 @@ dev:
           provider: credential_chain
       settings:
         s3_region: eu-west-1
+
+    dev:
+      type: duckdb
+      path: "md:?motherduck_token={{env_var('MOTHERDUCK_DEV_TOKEN')}}"
+      extensions:
+        - httpfs
+        - parquet
+        - spatial
+        - name: gsheets
+          repo: community
+      settings:
+        s3_region: eu-west-1
+        s3_access_key_id: "{{ env_var('S3_ACCESS_KEY_ID') }}"
+        s3_secret_access_key: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"
