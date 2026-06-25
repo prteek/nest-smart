@@ -4,8 +4,5 @@ models:
   - name: pipr
     description: "Reading in data from ONS"
     config:
-        materialized: external
-        location: 's3://bkt.standard/ons_housing/pipr/data'
-        format: parquet
-        glue_register: true
-        glue_database: ons_housing
+        materialized: table
+        database: ons_housing

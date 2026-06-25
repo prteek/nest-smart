@@ -4,8 +4,5 @@ models:
   - name: imd
     description: "Reading in data from ONS"
     config:
-        materialized: external
-        location: 's3://bkt.standard/ons_census2021/imd/data'
-        format: parquet
-        glue_register: true
-        glue_database: ons_census2021
+        materialized: table
+        database: ons_census2021

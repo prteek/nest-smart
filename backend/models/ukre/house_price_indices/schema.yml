@@ -5,3 +5,4 @@ models:
     description: "Merging all indices and creating a long format table for analytics"
     config:
         materialized: table
+        database: ukre
