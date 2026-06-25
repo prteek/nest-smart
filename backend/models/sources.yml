@@ -2,7 +2,8 @@ version: 2
 sources:
 
   - name: geo
-    description: "All source files in s3://bkt.raw/geo/"
+    description: "Geo tables"
+    database: geo
     tables:
       - name: dim_country
       - name: dim_region
@@ -15,6 +16,9 @@ sources:
       - name: area_types
       - name: post_town_geo_mapping
 
+  - name: geo.raw
+    description: "Raw geo files"
+    tables:
       - name: Local_Authority_Districts_May_2024_Boundaries_UK_BFC_-6788913184658251542.geojson
         config:
           external_location: st_read(
