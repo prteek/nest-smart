@@ -1,33 +1,17 @@
 dev:
   target: dev
   outputs:
-    duck:
-      type: duckdb
-      path: ../duckdb/dbt.duckdb  # Path to your DuckDB database file
-      attach:
-        - path: ../duckdb/geo.duckdb
-          alias: geo
-        - path: ../duckdb/ons_census2021.duckdb
-          alias: ons_census2021
-        - path: ../duckdb/ons_housing.duckdb
-          alias: ons_housing
-        - path: ../duckdb/ukre.duckdb
-          alias: ukre
-      extensions:
-        - httpfs  # Required for reading files from S3/HTTP
-        - parquet
-        - spatial
-      settings:
-        s3_region: eu-west-1
-        s3_access_key_id: "{{ env_var('S3_ACCESS_KEY_ID') }}"
-        s3_secret_access_key: "{{ env_var('S3_SECRET_ACCESS_KEY') }}"
-
-
     dev:
       type: duckdb
-      path: "md:?motherduck_token={{env_var('MOTHERDUCK_TOKEN')}}"
+      path: "md:?motherduck_token={{env_var('MOTHERDUCK_TOKEN')}}" # Path to your DuckDB database file
+      attach:
+        - path: local_files/local.duckdb
+          alias: local
+        - path: local_files/geo.duckdb
+          alias: geo
+
       extensions:
-        - httpfs
+        - httpfs  # Required for reading files from S3/HTTP
         - parquet
         - spatial
       settings:
