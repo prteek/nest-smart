@@ -14,6 +14,12 @@ sources:
       - name: dim_msoa
       - name: dim_lsoa
       - name: dim_post_code
+
+  - name: geo_mart
+    description: "Geo tables"
+    database: mart
+    schema: geo
+    tables:
       - name: area_types
       - name: post_town_geo_mapping
 

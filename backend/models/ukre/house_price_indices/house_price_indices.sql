@@ -76,7 +76,7 @@ where price is not null
 select a.*
 , b.area_code
 , b.type as area_type
-from combined a inner join {{ source('geo', 'area_types') }} b on a.area_name = b.area_name
+from combined a inner join {{ source('geo_mart', 'area_types') }} b on a.area_name = b.area_name
 where a.area_name <> 'united kingdom'
 union all
 select *
