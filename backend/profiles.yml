@@ -5,10 +5,8 @@ dev:
       type: duckdb
       path: "md:?motherduck_token={{env_var('MOTHERDUCK_TOKEN')}}" # Path to your DuckDB database file
       attach:
-        - path: local_files/local.duckdb
-          alias: local
-        - path: local_files/geo.duckdb
-          alias: geo
+        - path: local_files/staging.duckdb
+          alias: staging
 
       extensions:
         - httpfs  # Required for reading files from S3/HTTP
