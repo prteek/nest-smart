@@ -5,22 +5,26 @@ models:
     description: "Reading in data from ONS"
     config:
         materialized: table
-        database: ons_housing
+        database: mart
+        schema: ons_housing
 
   - name: affordability_gross_income
     description: "Reading in data from ONS"
     config:
         materialized: table
-        database: ons_housing
+        database: mart
+        schema: ons_housing
 
   - name: affordability_median_price
     description: "Reading in data from ONS"
     config:
         materialized: table
-        database: ons_housing
+        database: mart
+        schema: ons_housing
 
   - name: affordability
     description: "Joining the 3 tables above"
     config:
         materialized: table
-        database: ons_housing
+        database: mart
+        schema: ons_housing

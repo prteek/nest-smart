@@ -6,4 +6,5 @@ models:
     description: "Loading GEOJSON data"
     config:
         materialized: table
-        database: geo
+        database: staging
+        schema: geo

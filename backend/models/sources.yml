@@ -3,8 +3,8 @@ sources:
 
   - name: geo
     description: "Geo tables"
-    database: geo
-    schema: main
+    database: staging
+    schema: geo
     tables:
       - name: dim_country
       - name: dim_region
@@ -69,8 +69,8 @@ sources:
 
 
   - name: ons_housing
-    database: ons_housing
-    schema: main
+    database: mart
+    schema: ons_housing
     tables:
       - name: hpi
       - name: pipr
@@ -130,8 +130,8 @@ sources:
             )
 
   - name: ons_census2021
-    database: ons_census2021
-    schema: main
+    database: mart
+    schema: ons_census2021
     tables:
       - name: imd
       - name: msoa_age

@@ -5,4 +5,5 @@ models:
     description: "Reading in data from ONS"
     config:
         materialized: table
-        database: ons_housing
+        database: mart
+        schema: ons_housing
