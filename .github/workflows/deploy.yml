@@ -30,9 +30,9 @@ jobs:
           pip install uv
           uv sync
 
-      - name: Refresh data in athena
+      - name: Refresh data in Motherduck
         run: |
-          dbt run --select ukre -t dev
+          uv run dbt run -s ukre -t dev
         env:
           MOTHERDUCK_TOKEN: ${{ secrets.MOTHERDUCK_TOKEN }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
